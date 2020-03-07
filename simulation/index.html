@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/task.css">
+</head>
+
+<body>
+    <div class="container-fluid main-wrapper">
+        <div class="row lcontrol">
+            <div class="col">
+                <div class="panel" style="position: relative;">
+                    <center>
+                        <div class="btn-group btn-group-lg align-self-center scenes" role="group"
+                            aria-label="Basic example">
+                            <button type="button" data-scene="1" class="btn btn-primary active">Electron Diffraction</button>
+                            
+                        </div>
+                    </center>
+                    <i id="vol" class="fas fa-volume-up" style="position:absolute;right:10px;top:18px;cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row ucontrol" id="container2">
+            <div class="col-3">
+                <div class="panel mb-1">
+                    <div class="panel-head">
+                        Instructions
+                    </div>
+                    <div id="typer" style="word-wrap: break-word;">
+
+                    </div>
+
+                </div>
+                <div class="panel mb-1">
+                    <div class="panel-head">
+                        Procedure
+                    </div>
+                    <div class="panel padd">
+                        <select id="selOptSample" class="custom-select">
+                            <option value="0">Select The Sample</option>
+                            <option value="1">Material 1</option>
+                        </select><br><br>
+                        <button class="but sm w-100 blue" id="load">Load</button><br><br>
+                        <button class="but sm w-100 green" id="exec">Execute</button><br><br>
+                        <button class="but sm w-100 red" id="res">Reset</button><br><br>
+                        <button class="but sm w-100 orange" id="ptask" style="display: none;">Program Task</button>
+    
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="panel">
+                    <div class="panel-head">
+                        Electron Microscope
+                    </div>
+                    <img src="./images/sem.gif" height=500 width=500>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="panel mb-1">
+                    <div class="panel-head">
+                        Output
+                    </div>
+                        <div id="imgSeen"></div>
+                        <canvas
+                            style="transform:translateX(-50%);position:absolute;left:50%;top:50px;opacity: 0.5;display:none;"
+                            onclick="draw(event)" id="myCanvas" width=500 height=500
+                            style="z-index: 10;"></canvas>
+                </div>
+            </div>
+
+        </div>
+    <div id="container1" style="position: relative;left:5px;display:none;">
+        <div class="row">
+            <div class="col-6">
+                <h1 id="taskIt">TASK 1</h1>
+
+        <h2 id="check">
+            Select the Diffraction Pattern for the given region :-
+        </h2>
+
+
+        <h3 id="info"> Material 1</h3>
+        <img id="diff" class="img-fluid" src="./images/imgS1.png" width="400" height="400" style="border-radius: 20px;position: relative;left: 150px;">
+            </div>
+            <div class="col-5">
+                <div class="row" style="padding-top: 12rem;">
+                    <button class="btn col-3 btn-success" onclick="imgClick(0)" id="validate_button"><img class="img-fluid" src="./images/cnt.png" id="img1"></button>
+                    <button class="btn col-3 btn-success" onclick="imgClick(1)" id="validate_button1"><img class="img-fluid" src="./images/zrb2.png" id="img2"></button>
+                    <button class="btn col-3 btn-success" onclick="imgClick(2)" id="validate_button2"><img class="img-fluid" src="./images/mid.png" id="img3"></button>
+                    <button class="btn col-3 btn-success" onclick="imgClick(3)" id="validate_button3"><img class="img-fluid" src="./images/no.png" id="img4"></button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <center class="text-center pt-2">
+            <button class="btn btn-success mb-2" onclick="validate()">Validate</button><br>
+            <button id="next_experiment" class="btn btn-secondary" onclick="next()">Next Experiment</button>
+        </center>
+    </div>
+
+        <div id="toast-wrapper" aria-live="polite" aria-atomic="true" style="position:fixed;bottom:1rem;right:1rem;">
+        </div>
+
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/popper.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/task.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+#validate_button {
+  box-shadow: beige;
+  /* padding: 1rem; */
+  padding: 0 0 0 0;
+  width: 25%;
+  height: 40%;
+}
+#validate_button1 {
+  padding: 0 0 0 0;
+  box-shadow: beige;
+  width: 25%;
+  height: 40%;
+}
+#validate_button2 {
+  padding: 0 0 0 0;
+  box-shadow: beige;
+  width: 25%;
+  height: 40%;
+}
+#validate_button3 {
+  padding: 0 0 0 0;
+  box-shadow: beige;
+  width: 25%;
+  height: 40%;
+}
+#cntr{
+    height:20px; 
+    width:1px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:50%;
+}
