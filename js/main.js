@@ -286,17 +286,17 @@ document.getElementById("exec").onclick=function(){
         }
         else if(inside([tempPos.x,tempPos.y], polygon2))
         {
-            showToast("ZRB2");
+            showToast("Crystalline");
             if(volFlag)
-            textToSpeech("ZRB2");
-            img.src="./images/zrb2.png";
+            textToSpeech("Crystalline");
+            img.src="./images/crystalline.png";
         }
         else if(inside([tempPos.x,tempPos.y], polygon3))
         {
-            img.src="./images/cnt.png";
+            img.src="./images/amorphous.png";
             if(volFlag)
-            textToSpeech("CNT");
-            showToast("CNT");
+            textToSpeech("Amorphous");
+            showToast("Amorphous");
         }
         else
         {   
