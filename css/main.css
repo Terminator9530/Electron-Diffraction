@@ -362,3 +362,12 @@ div[class*="scene-"] .back {
   padding: 1rem;
   color: #aaa;
 }
+
+.custom-handle {
+  width: 1.9rem !important;
+  height: 1.6em !important;
+  top: 50%;
+  margin-top: -0.4em;
+  text-align: center;
+  line-height: 1.6em;
+}

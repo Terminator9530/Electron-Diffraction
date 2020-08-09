@@ -3,7 +3,7 @@ var clickedImg = -1;
 var materials = [
 
 ];
-var corr=[[0,1,1,1],[1,0,1,1],[1,1,0,1],[1,1,1,0]];
+var corr=[[0,1,1,1],[1,0,1,1],[1,1,1,0],[1,1,0,1]];
 var counter=0;
 function showToast(msg, type = 0) {
     tWrapper.append(`<div id="t${ti++}" class="toast${type == 1 ? ' danger' : (type == 2 ? ' success' : '')}" role="alert" aria-live="assertive" aria-atomic="true">

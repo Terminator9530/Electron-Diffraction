@@ -32,7 +32,7 @@ function removeClass(ele, cls) {
         timerId = setTimeout(type, typeSpeed, txt, cur + 1);
     }
     // type("this is test")
-    type("1. Please Select The Image@2. Please Load The Image@3. Please Select The Mode");
+    type("1. Switch on the machine by clicking on power on button@2. Click on load sample to load the sample into the machine@3. Click on any region in the image@4. Click on execute to get the output image");
 
 
 //toast
@@ -117,52 +117,95 @@ $(document).ready(function(){
         console.log("Mulfactor",mulFactor,mulFactorH);
         document.getElementById("myCanvas").height = img.height;
         document.getElementById("myCanvas").width = img.width;
-        /*setTimeout(() => {
-            for(let i = 1; i < polygon1.length; i++) {
-                ctx.moveTo(polygon1[i-1][0]*mulFactor,polygon1[i-1][1]*mulFactorH);
-                ctx.lineTo(polygon1[i][0]*mulFactor,polygon1[i][1]*mulFactorH);
-                ctx.stroke();
-            }
-            for(let i = 1; i < polygon2.length; i++) {
-                ctx.moveTo(polygon2[i-1][0]*mulFactor,polygon2[i-1][1]*mulFactorH);
-                ctx.lineTo(polygon2[i][0]*mulFactor,polygon2[i][1]*mulFactorH);
-                ctx.stroke();
-            }
-            for(let i = 1; i < polygon3.length; i++) {
-                ctx.moveTo(polygon3[i-1][0]*mulFactor,polygon3[i-1][1]*mulFactorH);
-                ctx.lineTo(polygon3[i][0]*mulFactor,polygon3[i][1]*mulFactorH);
-                ctx.stroke();
-            }
-        }, 100)*/
     });
   });
 var img;
 var temp=0;
+var materialButton = 0;
 addClass(document.getElementById("exec"), "out");
 document.getElementById("exec").disabled = true;
+addClass(document.getElementById("load"), "out");
+document.getElementById("load").disabled = true;
+addClass(document.getElementById("material1"), "out");
+document.getElementById("material1").disabled = true;
+addClass(document.getElementById("setav"), "out");
+document.getElementById("setav").disabled = true;
+
+document.getElementById("material1").onclick = function () {
+    addClass(document.getElementById("material1"), "out");
+    document.getElementById("material1").disabled = true;
+    materialButton = 1;
+    showToast("Now click on Load button to load sample");
+    if (volFlag)
+        textToSpeech("Now click on Load button to load sample");
+    
+    if(machineState){
+        removeClass(document.getElementById("load"), "out");
+        document.getElementById("load").disabled = false;
+    }
+}
+
+var machineState = false;
+
+function changeClass(mode){
+    if(mode){
+        $("#avslider").slider("option", "disabled", false);
+        removeClass(document.getElementById("setav"), "out");
+        document.getElementById("setav").disabled = false;
+    } else {
+        addClass(document.getElementById("material1"), "out");
+        document.getElementById("material1").disabled = true;
+        addClass(document.getElementById("load"), "out");
+        document.getElementById("load").disabled = true;
+        addClass(document.getElementById("exec"), "out");
+        document.getElementById("exec").disabled = true;
+        $("#avslider").slider("option", "disabled", true);
+        addClass(document.getElementById("setav"), "out");
+        document.getElementById("setav").disabled = true;
+    }
+}
+document.getElementById("switchOn").onclick = function(){
+    if(machineState){
+        $("#switchOn").addClass("green");
+        $("#switchOn").html(`SWITCH ON`);
+        $("#switchOn").removeClass("red");
+        machineState = false;
+        showToast("Machine is switched off");
+        if(volFlag)
+        textToSpeech("Machine is switched off");
+    } else {
+        $("#switchOn").addClass("red");
+        $("#switchOn").html(`SWITCH OFF`);
+        $("#switchOn").removeClass("green");
+        machineState = true;
+        showToast("Machine is switched on");
+        if(volFlag)
+        textToSpeech("Machine is switched on");
+    }
+    changeClass(machineState);
+}
+var av;
+$("#setav").click(function () {
+    av = $("#avslider").slider("option", "value");
+    if(av || av == 0){
+        removeClass(document.getElementById("material1"), "out");
+        document.getElementById("material1").disabled = false;
+        $("#avslider").slider("option", "disabled", true);
+        addClass(document.getElementById("setav"), "out");
+        document.getElementById("setav").disabled = true;
+        showToast("Accelerating voltage has been set");
+        if(volFlag)
+        textToSpeech("Accelerating voltage has been set");
+    }
+  });
+
+
 document.getElementById("load").onclick = function () {
-    var opt = document.getElementById("selOptSample").value;
+    var opt = materialButton;
     img.onload = () => {   
     img.height="500";
         mulFactor=parseFloat(parseFloat(img.width)/578);
         mulFactorH=parseFloat(parseFloat(img.height)/578);
-        /*setTimeout(() => {
-            for(let i = 1; i < polygon1.length; i++) {
-                ctx.moveTo(polygon1[i-1][0]*mulFactor,polygon1[i-1][1]*mulFactorH);
-                ctx.lineTo(polygon1[i][0]*mulFactor,polygon1[i][1]*mulFactorH);
-                ctx.stroke();
-            }
-            for(let i = 1; i < polygon2.length; i++) {
-                ctx.moveTo(polygon2[i-1][0]*mulFactor,polygon2[i-1][1]*mulFactorH);
-                ctx.lineTo(polygon2[i][0]*mulFactor,polygon2[i][1]*mulFactorH);
-                ctx.stroke();
-            }
-            for(let i = 1; i < polygon3.length; i++) {
-                ctx.moveTo(polygon3[i-1][0]*mulFactor,polygon3[i-1][1]*mulFactorH);
-                ctx.lineTo(polygon3[i][0]*mulFactor,polygon3[i][1]*mulFactorH);
-                ctx.stroke();
-            }
-        }, 100);*/
         document.getElementById("myCanvas").height = img.height;
         document.getElementById("myCanvas").width = img.width;
     };
@@ -256,14 +299,7 @@ function inside(point, vs) {
 
     return inside;
 }
-/*$( "#myCanvas" ).mousemove(
-    function(evt) {
-        var pos=getMousePos(canvas,evt);
-        console.log(pos);
-    }
-  );*/
   
-
 
 document.getElementById("exec").onclick=function(){
     if(temp==0)
