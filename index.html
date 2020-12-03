@@ -30,7 +30,7 @@
         <div class="row ucontrol" id="container2">
             <div class="col-3">
                 <div class="panel mb-1">
-                    <div class="panel-head">
+                    <div class="panel-head" id = "insPanel">
                         Instructions
                     </div>
                     <div id="typer" style="word-wrap: break-word;">
@@ -39,10 +39,10 @@
 
                 </div>
                 <div class="panel mb-1">
-                    <div class="panel-head">
+                    <div class="panel-head" id = "procPanel">
                         Procedure
                     </div>
-                    <div class="panel padd">
+                    <div class="panel padd" id = "controls">
                         <button class="but sm w-100 green" id="switchOn">SWITCH ON</button><br><br>
                         <div class="form-group mt-4">
                             <label for="formControlRange">Accelerating voltage (in kv)</label>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <center><button class="btn btn-primary" id="material1">Metal</button></center><br><br>
-                        <button class="but sm w-100 blue" id="load">Load The Sample</button><br><br>
+                        <button class="but sm w-100 blue" id="load">Beam On</button><br><br>
                         <button class="but sm w-100 green" id="exec">Execute</button><br><br>
                         <button class="but sm w-100 red" id="res">Reset</button><br><br>
                         <button class="but sm w-100 orange" id="ptask" style="display: none;">Program Task</button>
@@ -68,23 +68,25 @@
             </div>
             <div class="col-3">
                 <div class="panel">
-                    <div class="panel-head">
+                    <div class="panel-head" id = "macPanel">
                         Electron Microscope
                     </div>
-                    <img src="./images/tem.gif" height=700 width=500>
+                    <img src="./images/static-tem.gif" height=700 width=500 id = "machineImage">
                 </div>
 
             </div>
             <div class="col-6">
                 <div class="panel mb-1">
-                    <div class="panel-head">
+                    <div class="panel-head" id = "outPanel">
                         Output
                     </div>
-                        <div id="imgSeen"></div>
+                    <div class = "panel-padd" id = "output">
+                        <div id="imgSeen" style="visibility: hidden;"></div>
                         <canvas
                             style="transform:translateX(-50%);position:absolute;left:50%;top:50px;opacity: 0.5;display:none;"
                             onclick="draw(event)" id="myCanvas" width=500 height=500
                             style="z-index: 10;"></canvas>
+                    </div>
                 </div>
             </div>
 

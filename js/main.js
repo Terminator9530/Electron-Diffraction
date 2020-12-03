@@ -230,6 +230,10 @@ document.getElementById("load").onclick = function () {
         return;
     }
     if (opt != 0) {
+        document.getElementById("machineImage").src = "./images/tem.gif";
+        setTimeout(function(){
+            document.getElementById("imgSeen").style.visibility = "visible";
+        },6600);
         showToast("Now Select The Area");
         if(volFlag)
         textToSpeech("Now Select The Area");
@@ -357,3 +361,29 @@ document.getElementById("ptask").onclick=function(){
     document.getElementById("container1").style.display="block";
     document.getElementById("container2").style.display="none";
 }
+
+// collapsable bar
+
+$(document).ready(function(){
+    $("#insPanel").click(function(){
+      $("#typer").slideToggle('slow');
+    });
+});
+
+$(document).ready(function(){
+    $("#procPanel").click(function(){
+      $("#controls").slideToggle('slow');
+    });
+});
+
+$(document).ready(function(){
+    $("#macPanel").click(function(){
+      $("#machineImage").slideToggle('slow');
+    });
+});
+
+$(document).ready(function(){
+    $("#outPanel").click(function(){
+      $("#output").slideToggle('slow');
+    });
+});
